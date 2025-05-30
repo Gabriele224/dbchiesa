@@ -3,7 +3,7 @@ import os
 import streamlit.components.v1 as components
 st.title("Chiesa")
 
-PATH_HTML=r"C:\Users\g.ricca\Desktop\DbChiesa\PRAY"
+PATH_HTML="PRAY"
 
 html_pages = [file for file in os.listdir(PATH_HTML) if file.endswith(".html")]
 
