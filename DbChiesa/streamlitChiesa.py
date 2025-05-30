@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import streamlit.components.v1 as components
 st.title("Chiesa")
-PATH_HTML="PRAY"
+PATH_HTML="./DbChiesa/PRAY"
 
 if os.path.isdir(PATH_HTML):
     html_pages = [file for file in os.listdir(PATH_HTML) if file.endswith(".html")]
