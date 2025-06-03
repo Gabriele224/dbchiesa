@@ -3,11 +3,11 @@ import os
 import streamlit.components.v1 as components
 st.title("Benvenuti nello spazio dedicato ai momenti dello spirito")
 
-PATH_HTML_PRAY=r"C:\Users\g.ricca\Desktop\DbChiesa\PRAY"
+PATH_HTML_PRAY="PRAY"
 
-PATH_HTML_ROSARY=r"C:\Users\g.ricca\Desktop\DbChiesa\ROSARY"
+PATH_HTML_ROSARY="ROSARY"
 
-PATH_HTML_LITANIES=r"C:\Users\g.ricca\Desktop\DbChiesa\LITANIES"
+PATH_HTML_LITANIES="LITANIES"
 st.write("Momento dedicato alla Preghiera")
 
 html_pages_pray = [file for file in os.listdir(PATH_HTML_PRAY) if file.endswith(".html")]
