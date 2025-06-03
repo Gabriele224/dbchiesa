@@ -43,7 +43,7 @@ if st.button("Ricerca Mistero", box_html_rosary):
 else:
     st.write("\n")
 
-st.write("Momento decicato alle Litanie")
+st.write("Momento dedicato alle Litanie")
 
 html_pages_litanies = [file for file in os.listdir(PATH_HTML_LITANIES) if file.endswith(".html")]
 
