@@ -20,15 +20,15 @@ def embed_images_in_html(html_content, base_folder):
             html_content = html_content.replace(src, img_data_uri)
     return html_content
 
-PATH_HTML_PRAY=r"C:\Users\g.ricca\Desktop\DbChiesa\PRAY"
+PATH_HTML_PRAY="./DbChiesa/PRAY"
 
-PATH_HTML_ROSARY=r"C:\Users\g.ricca\Desktop\DbChiesa\ROSARY"
+PATH_HTML_ROSARY="./DbChiesa/ROSARY"
 
-PATH_HTML_LITANIES=r"C:\Users\g.ricca\Desktop\DbChiesa\LITANIES"
+PATH_HTML_LITANIES="./DbChiesa/LITANIES"
 
-PATH_HTML_CGREVENTS=r"C:\Users\g.ricca\Desktop\DbChiesa\CGREVENTS"
+PATH_HTML_CGREVENTS="./DbChiesa/CGREVENTS"
 
-PATH_HTML_CGRBIBLE=r"C:\Users\g.ricca\Desktop\DbChiesa\CGRBIBLE"
+PATH_HTML_CGRBIBLE="./DbChiesa/CGRBIBLE"
 st.write("Momento dedicato alla Preghiera")
 
 html_pages_pray = [file for file in os.listdir(PATH_HTML_PRAY) if file.endswith(".html")]
