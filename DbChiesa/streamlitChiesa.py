@@ -29,6 +29,9 @@ PATH_HTML_LITANIES="./DbChiesa/LITANIES"
 PATH_HTML_CGREVENTS="./DbChiesa/CGREVENTS"
 
 PATH_HTML_CGRBIBLE="./DbChiesa/CGRBIBLE"
+
+PATH_HTML_PROVERB="./DbChiesa/PROVERBS"
+
 st.write("Momento dedicato alla Preghiera")
 
 html_pages_pray = [file for file in os.listdir(PATH_HTML_PRAY) if file.endswith(".html")]
@@ -112,6 +115,24 @@ if st.button("Ricerca Versetti Bibbia CGR", box_html_cgr):
         contenuto= file.read()
 
     contenuto = embed_images_in_html(contenuto, PATH_HTML_CGRBIBLE)
+
+    components.html(contenuto, height=600, scrolling=True)
+else:
+    st.write("\n")
+
+st.write("Proverbi di Gesù")
+html_pages_proverbs = [file for file in os.listdir(PATH_HTML_PROVERB) if file.endswith(".html")]
+
+box_html_proverbs= st.selectbox("Seleziona file desiderato\n", html_pages_proverbs)
+
+if st.button("Ricerca del Proverbio", box_html_proverbs):
+
+    file_path= os.path.join(PATH_HTML_PROVERB,box_html_proverbs)
+    with open(file_path, "r+", encoding="utf-8") as file:
+
+        contenuto= file.read()
+
+    contenuto = embed_images_in_html(contenuto, PATH_HTML_PROVERB)
 
     components.html(contenuto, height=600, scrolling=True)
 else:
