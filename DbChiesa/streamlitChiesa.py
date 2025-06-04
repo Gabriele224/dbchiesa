@@ -32,6 +32,8 @@ PATH_HTML_CGRBIBLE="./DbChiesa/CGRBIBLE"
 
 PATH_HTML_PROVERB="./DbChiesa/PROVERBS"
 
+PATH_HTML_SANTS="./DbChiesa/SANTS"
+
 st.write("Momento dedicato alla Preghiera")
 
 html_pages_pray = [file for file in os.listdir(PATH_HTML_PRAY) if file.endswith(".html")]
@@ -133,6 +135,24 @@ if st.button("Ricerca del Proverbio", box_html_proverbs):
         contenuto= file.read()
 
     contenuto = embed_images_in_html(contenuto, PATH_HTML_PROVERB)
+
+    components.html(contenuto, height=600, scrolling=True)
+else:
+    st.write("\n")
+
+st.write("Area dedicata ai Santi")
+html_pages_sants = [file for file in os.listdir(PATH_HTML_SANTS) if file.endswith(".html")]
+
+box_html_sants= st.selectbox("Seleziona file desiderato\n", html_pages_sants)
+
+if st.button("Ricerca del Santo", box_html_proverbs):
+
+    file_path= os.path.join(PATH_HTML_SANTS,box_html_sants)
+    with open(file_path, "r+", encoding="utf-8") as file:
+
+        contenuto= file.read()
+
+    contenuto = embed_images_in_html(contenuto, PATH_HTML_SANTS)
 
     components.html(contenuto, height=600, scrolling=True)
 else:
