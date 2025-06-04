@@ -145,7 +145,7 @@ html_pages_sants = [file for file in os.listdir(PATH_HTML_SANTS) if file.endswit
 
 box_html_sants= st.selectbox("Seleziona file desiderato\n", html_pages_sants)
 
-if st.button("Ricerca del Santo", box_html_proverbs):
+if st.button("Ricerca del Santo", box_html_sants):
 
     file_path= os.path.join(PATH_HTML_SANTS,box_html_sants)
     with open(file_path, "r+", encoding="utf-8") as file:
