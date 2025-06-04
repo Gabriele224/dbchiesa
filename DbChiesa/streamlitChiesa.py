@@ -1,13 +1,34 @@
 import streamlit as st
 import os
 import streamlit.components.v1 as components
+from PIL import Image
+import base64 ,re
 st.title("Benvenuti nello spazio dedicato ai momenti dello spirito")
 
-PATH_HTML_PRAY="./DbChiesa/PRAY"
+def encode_image_to_base64(img_path):
+    with open(img_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+        ext = os.path.splitext(img_path)[1][1:]  # esempio: jpg, png
+        return f"data:image/{ext};base64,{encoded_string}"
 
-PATH_HTML_ROSARY="./DbChiesa/ROSARY"
+def embed_images_in_html(html_content, base_folder):
+    matches = re.findall(r'<img\s+[^>]*src="([^"]+)"', html_content)
+    for src in matches:
+        img_path = os.path.join(base_folder, src)
+        if os.path.exists(img_path):
+            img_data_uri = encode_image_to_base64(img_path)
+            html_content = html_content.replace(src, img_data_uri)
+    return html_content
 
-PATH_HTML_LITANIES="./DbChiesa/LITANIES"
+PATH_HTML_PRAY=r"C:\Users\g.ricca\Desktop\DbChiesa\PRAY"
+
+PATH_HTML_ROSARY=r"C:\Users\g.ricca\Desktop\DbChiesa\ROSARY"
+
+PATH_HTML_LITANIES=r"C:\Users\g.ricca\Desktop\DbChiesa\LITANIES"
+
+PATH_HTML_CGREVENTS=r"C:\Users\g.ricca\Desktop\DbChiesa\CGREVENTS"
+
+PATH_HTML_CGRBIBLE=r"C:\Users\g.ricca\Desktop\DbChiesa\CGRBIBLE"
 st.write("Momento dedicato alla Preghiera")
 
 html_pages_pray = [file for file in os.listdir(PATH_HTML_PRAY) if file.endswith(".html")]
@@ -55,6 +76,42 @@ if st.button("Ricerca Litanie", box_html_litanies):
     with open(file_path, "r+", encoding="utf-8") as file:
 
         contenuto= file.read()
+
+    components.html(contenuto, height=600, scrolling=True)
+else:
+    st.write("\n")
+
+st.write("Eventi CGR (Comunità Gesù Risorto)")
+html_pages_cgr = [file for file in os.listdir(PATH_HTML_CGREVENTS) if file.endswith(".html")]
+
+box_html_cgr= st.selectbox("Seleziona file desiderato\n", html_pages_cgr)
+
+if st.button("Ricerca CGR", box_html_cgr):
+
+    file_path= os.path.join(PATH_HTML_CGREVENTS,box_html_cgr)
+    with open(file_path, "r+", encoding="utf-8") as file:
+
+        contenuto= file.read()
+
+    contenuto = embed_images_in_html(contenuto, PATH_HTML_CGREVENTS)
+
+    components.html(contenuto, height=600, scrolling=True)
+else:
+    st.write("\n")
+
+st.write("Versetti Bibbia CGR (Comunità Gesù Risorto)")
+html_pages_cgr = [file for file in os.listdir(PATH_HTML_CGRBIBLE) if file.endswith(".html")]
+
+box_html_cgr= st.selectbox("Seleziona file desiderato\n", html_pages_cgr)
+
+if st.button("Ricerca CGR", box_html_cgr):
+
+    file_path= os.path.join(PATH_HTML_CGRBIBLE,box_html_cgr)
+    with open(file_path, "r+", encoding="utf-8") as file:
+
+        contenuto= file.read()
+
+    contenuto = embed_images_in_html(contenuto, PATH_HTML_CGRBIBLE)
 
     components.html(contenuto, height=600, scrolling=True)
 else:
