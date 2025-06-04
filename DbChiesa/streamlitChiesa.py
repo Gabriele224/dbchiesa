@@ -86,7 +86,7 @@ html_pages_cgr = [file for file in os.listdir(PATH_HTML_CGREVENTS) if file.endsw
 
 box_html_cgr= st.selectbox("Seleziona file desiderato\n", html_pages_cgr)
 
-if st.button("Ricerca CGR", box_html_cgr):
+if st.button("Ricerca Eventi CGR", box_html_cgr):
 
     file_path= os.path.join(PATH_HTML_CGREVENTS,box_html_cgr)
     with open(file_path, "r+", encoding="utf-8") as file:
@@ -104,7 +104,7 @@ html_pages_cgr = [file for file in os.listdir(PATH_HTML_CGRBIBLE) if file.endswi
 
 box_html_cgr= st.selectbox("Seleziona file desiderato\n", html_pages_cgr)
 
-if st.button("Ricerca CGR", box_html_cgr):
+if st.button("Ricerca Versetti Bibbia CGR", box_html_cgr):
 
     file_path= os.path.join(PATH_HTML_CGRBIBLE,box_html_cgr)
     with open(file_path, "r+", encoding="utf-8") as file:
