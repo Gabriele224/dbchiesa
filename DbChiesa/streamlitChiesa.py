@@ -140,7 +140,7 @@ if st.button("Ricerca del Proverbio", box_html_proverbs):
 else:
     st.write("\n")
 
-st.write("Area dedicata ai Santi")
+st.write("Storia dedicata ai Santi")
 html_pages_sants = [file for file in os.listdir(PATH_HTML_SANTS) if file.endswith(".html")]
 
 box_html_sants= st.selectbox("Seleziona file desiderato\n", html_pages_sants)
