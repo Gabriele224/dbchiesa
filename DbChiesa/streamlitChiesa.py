@@ -86,7 +86,7 @@ box_html_litanies= st.selectbox("Seleziona le litanie desiderato\n", display_nam
 if st.button("Ricerca Litanie", box_html_litanies):
 
     # Ricostruisci il nome completo del file
-    selected_file = box_html_rosary + ".html"
+    selected_file = box_html_litanies + ".html"
     file_path= os.path.join(PATH_HTML_LITANIES,selected_file)
     with open(file_path, "r+", encoding="utf-8") as file:
 
